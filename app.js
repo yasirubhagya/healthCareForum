@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const cors = require('cors')
 const mainRoutes =require('./mainroutes');
-
+const nosqldb = require('./nosqldbconn');
+const sqldb = require('./sqldbconn');
+const sqlcmd = require('./sqlcmd');
 
 app.use(cors());
 //app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,8 +24,6 @@ app.use((req, res, next) => {
 });
 
 app.use('/api',mainRoutes);
-
-
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');
